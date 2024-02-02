@@ -20,7 +20,7 @@ pipeline {
         // COmmands related to code deployment
 		// copy the war file to tomcat server
 	  sshagent(['root']) {
-          sh "scp -o StrictHostKeyCHecking=no target/SimpleTomcatWebApp.war  root@43.204.22.29:/home/ec2-user/tomcat/apache-tomcat-10.1.18/webapps"
+          sh "scp -o StrictHostKeyCHecking=no target/SimpleTomcatWebApp.war  root@15.206.116.164:/home/ec2-user/tomcat/apache-tomcat-10.1.18/webapps"
 		 }
 		  }
     }
