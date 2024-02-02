@@ -28,8 +28,12 @@ pipeline {
    stage('test') {
     steps {
      // commands related to testing
-	      echo " This is deploy stage"
+	     echo " This is deploy stage"
 		  }
+       }
+    }
+}
+      
        }
     }
 }
