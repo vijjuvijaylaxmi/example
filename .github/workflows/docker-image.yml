@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . -t app Dockerfile --tag image:$(date +%s)
            docker login -u vijjuvijaylaxmi -p dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY
            docker tag app vijjuvijaylaxmi/python   
            docker push vijjuvijaylaxmi/python:tagname
