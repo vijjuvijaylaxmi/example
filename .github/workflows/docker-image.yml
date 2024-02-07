@@ -19,9 +19,8 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.vijjuvijaylaxmi }}
         DOCKER_PASSWORD: ${{ secrets.dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY }}
       run: |
-          docker build -f ./main.yml -t vijjuvijaylaxmi/python:$(date +%Y%m%d%H%M%S) .
+          docker image build -t vijjuvijaylaxmi/python:v1 .
           docker login -u vijjuvijaylaxmi -p dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY
           docker tag vijjuvijaylaxmi/python:$(date +%Y%m%d%H%M%S) vijjuvijaylaxmi/python:latest
           docker push vijjuvijaylaxmi/python:latest
-
 
