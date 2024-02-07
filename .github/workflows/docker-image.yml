@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: main.yaml CI
 
 on:
   push:
@@ -17,10 +17,11 @@ jobs:
     - name: Build and push Docker image
       env:
         DOCKER_USERNAME: ${{ secrets.vijjuvijaylaxmi }}
-        DOCKER-PASSWORD: ${{ secrets.dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY }}
-      run: 
-           docker build -f main.yml -t vijjuvijaylaxmi/python:$(date +%s) .
-           docker login -u vijjuvijaylaxmi -p dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY
-           docker tag app vijjuvijaylaxmi/python   
-           docker push vijjuvijaylaxmi/python:tagname
-           
+        DOCKER_PASSWORD: ${{ secrets.dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY }}
+      run: |
+          docker build -f main.yml -t vijjuvijaylaxmi/python:$(date +%Y%m%d%H%M%S) .
+          docker login -u vijjuvijaylaxmi -p $DOCKER_PASSWORD
+          docker tag vijjuvijaylaxmi/python:$(date +%Y%m%d%H%M%S) vijjuvijaylaxmi/python:latest
+          docker push vijjuvijaylaxmi/python:latest
+
+
