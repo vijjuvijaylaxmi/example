@@ -18,7 +18,7 @@ jobs:
         run: |
           TAG=$(date +%Y%m%d%H%M%S)
           docker image build -t vijjuvijaylaxmi/python:$TAG .
-          docker login -u vijjuvijaylaxmi -p $DOCKER_PASSWORD
+          docker login -u vijjuvijaylaxmi -p dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY
           docker tag vijjuvijaylaxmi/python:$TAG vijjuvijaylaxmi/python:latest
           docker push vijjuvijaylaxmi/python:$TAG
           docker push vijjuvijaylaxmi/python:latest
