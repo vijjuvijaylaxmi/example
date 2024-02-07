@@ -7,20 +7,20 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build and push Docker image
-      env:
-        DOCKER_USERNAME: ${{ secrets.vijjuvijaylaxmi }}
-        DOCKER_PASSWORD: ${{ secrets.dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY }}
-      run: |
-          docker image build -t vijjuvijaylaxmi/python:v1 .
-          docker login -u vijjuvijaylaxmi -p dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY
-          docker tag vijjuvijaylaxmi/python:$(date +%Y%m%d%H%M%S) vijjuvijaylaxmi/python:latest
+      - uses: actions/checkout@v3
+      - name: Build and push Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.vijjuvijaylaxmi }}
+          DOCKER_PASSWORD: ${{ secrets.dckr_pat_tnWd7G_YwZgRzvXHFQyyC-XyvKY }}
+        run: |
+          TAG=$(date +%Y%m%d%H%M%S)
+          docker image build -t vijjuvijaylaxmi/python:$TAG .
+          docker login -u vijjuvijaylaxmi -p $DOCKER_PASSWORD
+          docker tag vijjuvijaylaxmi/python:$TAG vijjuvijaylaxmi/python:latest
+          docker push vijjuvijaylaxmi/python:$TAG
           docker push vijjuvijaylaxmi/python:latest
+
 
